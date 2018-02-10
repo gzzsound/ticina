@@ -1,6 +1,15 @@
 #include <FastLED.h>
 #include <Wire.h>
 
+#ifdef DEBUG
+ #define DEBUG_PRINT(x)  Serial.println (x)
+#else
+ #define DEBUG_PRINT(x)
+#endif
+
+#define EFFECT_1 "EFFECT_1"
+#define EFFECT_2 "EFFECT_2"
+
 #define CLOCK_PIN_STRIP_1 8
 #define DATA_PIN_STRIP_1 9 
 
@@ -19,6 +28,8 @@ CRGB leds[NUM_STRIPS][NUMBEROFPIXELS];
 
 volatile byte effect1State = false;
 volatile byte effect2State = false;
+volatile int bytesCount;
+volatile int j;
 
 int brightness = 0;
 int fadeAmount = 5;
@@ -28,26 +39,29 @@ void setup() {
   FastLED.addLeds<CHIPSET, DATA_PIN_STRIP_1, CLOCK_PIN_STRIP_1, RGB>(leds[1], NUMBEROFPIXELS);
    
   resetLeds();
+  
+ #ifdef DEBUG
   Serial.begin(115200);
+ #endif
 
   Wire.begin(8);
   Wire.onReceive(receiveEvent);
 }
 
 void receiveEvent(int howMany) {
-  int bytesCount = Wire.available();
+  bytesCount = Wire.available();
   char buff[bytesCount];
-  int j=0;
+  j=0;
   for(int i=0; i< bytesCount; i++){
     buff[j++] = (char)Wire.read();
   }
 
-  if(strncmp(buff, "EFFECT_1", bytesCount) == 0){
+  if(strncmp(buff, EFFECT_1, bytesCount) == 0){
     effect1Swap();
-  }else if(strncmp(buff, "EFFECT_2", bytesCount) == 0){
+  }else if(strncmp(buff, EFFECT_2, bytesCount) == 0){
     effect2Swap();
   }else{
-    Serial.println("Command not recognised");
+    DEBUG_PRINT("Command not recognised");
   }
 }
 
@@ -56,13 +70,13 @@ void effect1Swap() {
   unsigned long interruptTimeEffect1 = millis();
   if (interruptTimeEffect1 - lastInterruptEffect1 > 100 && effect2State == false) {
     effect1State = true;
-    Serial.println("effect1State = true");
+    DEBUG_PRINT("effect1State = true");
   }
   lastInterruptEffect1 = interruptTimeEffect1;
 }
 
 void effect2Swap(){
-  Serial.println("effect2State = reverse");
+  DEBUG_PRINT("effect2State = reverse");
   static unsigned long lastInterruptEffect2 = 0;
   unsigned long interruptTimeEffect2 = millis();
   if (interruptTimeEffect2 - lastInterruptEffect2 > 100 && effect1State == false) {
@@ -71,7 +85,7 @@ void effect2Swap(){
     if(effect2State == false){
       resetLeds();
     }else{
-      Serial.println("effect2Swap - turn on");
+      DEBUG_PRINT("effect2Swap - turn on");
     }
   }
   lastInterruptEffect2 = interruptTimeEffect2;
@@ -85,11 +99,11 @@ void loop(){
 void triggerEffect1(){
   color_chase(CRGB::LightBlue, 30);
   effect1State = false;
-  Serial.println("Effect 1 is off");
+  DEBUG_PRINT("Effect 1 is off");
 }
 
 void resetLeds(){
-  Serial.println("resetLeds");
+  DEBUG_PRINT("resetLeds");
   brightness = 0;
   for(int y = 0; y < NUM_STRIPS; y++){
     for(int i = 0; i < NUM_LEDS; i++ ){ leds[y][i] = CRGB::Black; }
@@ -114,7 +128,7 @@ void pulse(uint32_t color, uint8_t wait){
 }
 
 void color_chase(uint32_t color, uint8_t wait){
-  Serial.println("Effect 1 is on");
+  DEBUG_PRINT("Effect 1 is on");
   FastLED.setBrightness( BRIGHTNESS );
   int count = NUM_LEDS-1;
   for(int led_number = count; led_number >= 0; led_number--){
