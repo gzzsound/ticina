@@ -1,3 +1,4 @@
+.DS_store
 mos.yml
 led_controller/build
 led_controller/deps
