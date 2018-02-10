@@ -1,4 +1,5 @@
 #include <FastLED.h>
+#include <Wire.h>
 
 #define CLOCK_PIN_STRIP_1 8
 #define DATA_PIN_STRIP_1 9 
@@ -13,14 +14,12 @@
 #define BRIGHTNESS 240
 #define NUMBEROFPIXELS 60
 #define NUM_STRIPS 2
-#define EFFECT_1_PIN 2
-#define EFFECT_2_PIN 3
 
 CRGB leds[NUM_STRIPS][NUMBEROFPIXELS];
 
 volatile byte effect1State = false;
 volatile byte effect2State = false;
-bool running = false;
+
 int brightness = 0;
 int fadeAmount = 5;
 
@@ -30,10 +29,26 @@ void setup() {
    
   resetLeds();
   Serial.begin(115200);
-  pinMode(EFFECT_1_PIN, INPUT);
-  pinMode(EFFECT_2_PIN, INPUT);
-  attachInterrupt(digitalPinToInterrupt(EFFECT_1_PIN), effect1Swap, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(EFFECT_2_PIN), effect2Swap, CHANGE);
+
+  Wire.begin(8);
+  Wire.onReceive(receiveEvent);
+}
+
+void receiveEvent(int howMany) {
+  int bytesCount = Wire.available();
+  char buff[bytesCount];
+  int j=0;
+  for(int i=0; i< bytesCount; i++){
+    buff[j++] = (char)Wire.read();
+  }
+
+  if(strncmp(buff, "EFFECT_1", bytesCount) == 0){
+    effect1Swap();
+  }else if(strncmp(buff, "EFFECT_2", bytesCount) == 0){
+    effect2Swap();
+  }else{
+    Serial.println("Command not recognised");
+  }
 }
 
 void effect1Swap() {
@@ -53,7 +68,7 @@ void effect2Swap(){
   if (interruptTimeEffect2 - lastInterruptEffect2 > 100 && effect1State == false) {
     effect2State = !effect2State;
     
-    if(effect2State == false ){
+    if(effect2State == false){
       resetLeds();
     }else{
       Serial.println("effect2Swap - turn on");
@@ -75,6 +90,7 @@ void triggerEffect1(){
 
 void resetLeds(){
   Serial.println("resetLeds");
+  brightness = 0;
   for(int y = 0; y < NUM_STRIPS; y++){
     for(int i = 0; i < NUM_LEDS; i++ ){ leds[y][i] = CRGB::Black; }
   }
