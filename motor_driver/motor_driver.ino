@@ -1,5 +1,13 @@
 #include <AccelStepper.h>
+#include <Wire.h>
 
+#ifdef DEBUG
+ #define DEBUG_PRINT(x)  Serial.println (x)
+#else
+ #define DEBUG_PRINT(x)
+#endif
+
+#define EFFECT_1 "EFFECT_1"
 #define HALFSTEP 8
 #define INPUT_PIN 2
 #define motorPin1  6     // IN1 on the ULN2003 driver 1
@@ -10,6 +18,8 @@
 AccelStepper stepper1(HALFSTEP, motorPin1, motorPin3, motorPin2, motorPin4);
 
 volatile bool needToRun;
+volatile int bytesCount;
+volatile int j;
 
 void setup() { 
   stepper1.setMaxSpeed(2000.0);
@@ -18,16 +28,34 @@ void setup() {
   stepper1.disableOutputs();
   stepper1.setCurrentPosition(0);
   Serial.begin(9600);
-  pinMode(INPUT_PIN, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(INPUT_PIN), start, CHANGE);
+
+  Wire.begin(8);
+  Wire.onReceive(receiveEvent);
+  
   needToRun = false;
 } 
+
+void receiveEvent(int howMany) {
+  bytesCount = Wire.available();
+  char buff[bytesCount];
+  j=0;
+  for(int i=0; i< bytesCount; i++){
+    buff[j++] = (char)Wire.read();
+  }
+
+  if(strncmp(buff, EFFECT_1, bytesCount) == 0){
+    start();
+  }else{
+    DEBUG_PRINT("Command not recognised");
+  }
+}
 
 void start(){
   static unsigned long lastInterruptEffect1 = 0;
   unsigned long interruptTimeEffect1 = millis();
   if (interruptTimeEffect1 - lastInterruptEffect1 > 100) {
     needToRun = !needToRun;
+    DEBUG_PRINT("Switching to...");
   }
   lastInterruptEffect1 = interruptTimeEffect1;
 }
