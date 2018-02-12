@@ -35,8 +35,8 @@ int brightness = 0;
 int fadeAmount = 5;
 
 void setup() {
-  FastLED.addLeds<CHIPSET, DATA_PIN_STRIP_2, CLOCK_PIN_STRIP_2, RGB>(leds[0], NUMBEROFPIXELS);
-  FastLED.addLeds<CHIPSET, DATA_PIN_STRIP_1, CLOCK_PIN_STRIP_1, RGB>(leds[1], NUMBEROFPIXELS);
+  FastLED.addLeds<CHIPSET, DATA_PIN_STRIP_2, CLOCK_PIN_STRIP_2, RGB, DATA_RATE_MHZ(12)>(leds[0], NUMBEROFPIXELS);
+  FastLED.addLeds<CHIPSET, DATA_PIN_STRIP_1, CLOCK_PIN_STRIP_1, RGB, DATA_RATE_MHZ(12) >(leds[1], NUMBEROFPIXELS);
    
   resetLeds();
 
@@ -106,7 +106,6 @@ void triggerEffect1(){
 
 void resetLeds(){
   DEBUG_PRINT("resetLeds");
-  brightness = 0;
   for(int y = 0; y < NUM_STRIPS; y++){
     for(int i = 0; i < NUM_LEDS; i++ ){ leds[y][i] = CRGB::Black; }
   }
