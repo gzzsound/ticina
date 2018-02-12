@@ -35,6 +35,9 @@ filesystem:
 # config_schema:
 #  - ["debug.level", 3]
 
+build_vars:
+  MGOS_ENABLE_I2C_GPIO: 1
+
 config_schema:
   - ["mqtt.server", "192.168.100.1:1883"]
   - ["device.id", "leds"]
@@ -45,7 +48,8 @@ config_schema:
   - ["wifi.sta.enable", true]
   - ["wifi.sta.ssid", ""]
   - ["wifi.sta.pass", ""]
-    
+  - ["wifi.ap.enable", false]
+
 # List of libraries used by this app, in order of initialisation
 libs:
   - origin: https://github.com/mongoose-os-libs/ca-bundle

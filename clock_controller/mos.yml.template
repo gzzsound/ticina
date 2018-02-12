@@ -14,6 +14,9 @@ tags:
 sources:
   - src
 
+build_vars:
+  MGOS_ENABLE_I2C_GPIO: 1
+
 # List of dirs. Files from these dirs will be copied to the device filesystem
 filesystem:
   - fs
@@ -45,7 +48,8 @@ config_schema:
   - ["wifi.sta.enable", true]
   - ["wifi.sta.ssid", ""]
   - ["wifi.sta.pass", ""]
-    
+  - ["wifi.ap.enable", false]
+
 # List of libraries used by this app, in order of initialisation
 libs:
   - origin: https://github.com/mongoose-os-libs/ca-bundle
