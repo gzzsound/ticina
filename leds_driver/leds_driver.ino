@@ -13,8 +13,8 @@
 #define CLOCK_PIN_STRIP_1 8
 #define DATA_PIN_STRIP_1 9 
 
-#define CLOCK_PIN_STRIP_2  7
-#define DATA_PIN_STRIP_2  6 
+#define CLOCK_PIN_STRIP_2 6
+#define DATA_PIN_STRIP_2 7 
 
 #define NUM_STRIPS 2
 
@@ -39,13 +39,13 @@ void setup() {
   FastLED.addLeds<CHIPSET, DATA_PIN_STRIP_1, CLOCK_PIN_STRIP_1, RGB>(leds[1], NUMBEROFPIXELS);
    
   resetLeds();
-  
- #ifdef DEBUG
-  Serial.begin(115200);
- #endif
 
   Wire.begin(8);
   Wire.onReceive(receiveEvent);
+  
+ #ifdef DEBUG 
+  Serial.begin(115200);
+ #endif
 }
 
 void receiveEvent(int howMany) {
@@ -55,7 +55,9 @@ void receiveEvent(int howMany) {
   for(int i=0; i< bytesCount; i++){
     buff[j++] = (char)Wire.read();
   }
-
+  
+  DEBUG_PRINT(buff);
+  
   if(strncmp(buff, EFFECT_1, bytesCount) == 0){
     effect1Swap();
   }else if(strncmp(buff, EFFECT_2, bytesCount) == 0){
