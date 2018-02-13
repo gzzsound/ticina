@@ -1,8 +1,6 @@
 #include <AccelStepper.h>
 #include <Wire.h>
 
-#define DEBUG
-
 #ifdef DEBUG
  #define DEBUG_PRINT(x)  Serial.println (x)
 #else
@@ -24,17 +22,13 @@ volatile int bytesCount;
 volatile int j;
 
 void setup() { 
-  stepper1.setMaxSpeed(2000.0);
-  stepper1.setAcceleration(2000.0);
-  stepper1.setSpeed(2000);
-  stepper1.disableOutputs();
-  stepper1.setCurrentPosition(0);
-  Serial.begin(9600);
-
+  stepper1.setMaxSpeed(1400);
+  stepper1.setAcceleration(700);
+  stepper1.moveTo(15000);
   Wire.begin(8);
   Wire.onReceive(receiveEvent);
-  
-  needToRun = false;
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
 } 
 
 void receiveEvent(int howMany) {
@@ -65,7 +59,7 @@ void start(){
 void loop() {
  if (needToRun) {
     stepper1.enableOutputs();
-    stepper1.move(-1000);
+    stepper1.move(1000);
     stepper1.run();
   }else{
     stepper1.stop();
