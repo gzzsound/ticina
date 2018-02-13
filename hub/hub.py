@@ -90,13 +90,16 @@ def setup_output_led():
     turn_led_off()
 
 def setup_gpio_inputs():
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
     for button in BUTTONS.keys():
         GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(button, GPIO.BOTH, callback=button_pressed, bouncetime=400)
 
+def setup_gpio():
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+
 try:
+    setup_gpio()
     setup_gpio_inputs()
     setup_output_led()
     setup_operational_led()
