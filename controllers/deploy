@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [[ $1 -eq 0 ]] ; then
+  echo "Configuration file name required"
+  exit 1
+fi
+
+cp $1 mos.yml
+
+~/.mos/bin/mos build --local --repo ../../mongoose-os --arch esp8266 --verbose
+
+~/.mos/bin/mos flash
+
+rm mos.yml
+
+~/.mos/bin/mos console

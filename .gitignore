@@ -1,4 +1,6 @@
 .DS_store
 mos.yml
+clock_mos.yml
+leds_mos.yml
 build/
 deps/
