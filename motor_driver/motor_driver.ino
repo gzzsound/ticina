@@ -24,7 +24,7 @@ volatile int j;
 void setup() { 
   stepper1.setMaxSpeed(1400);
   stepper1.setAcceleration(700);
-  stepper1.moveTo(15000);
+ 
   Wire.begin(8);
   Wire.onReceive(receiveEvent);
   pinMode(LED_BUILTIN, OUTPUT);
