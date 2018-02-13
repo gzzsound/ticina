@@ -1,0 +1,14 @@
+[Unit]
+Description=Ticina Remote Control
+After=multi-user.target
+
+[Service]
+EnvironmentFile=/home/pi/.credentials
+Type=simple
+ExecStart=/usr/bin/python /home/pi/hub.py
+Restart=on-abnormal
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target

@@ -4,6 +4,7 @@ import datetime
 import signal
 import sys
 import json
+import syslog
 import paho.mqtt.client as mqtt
 import RPi.GPIO as GPIO
 
@@ -12,6 +13,8 @@ EFFECT_2 = '4546464543545f32'
 
 LED_PIN = 23
 OPERATIONAL_LED_PIN = 24
+SHUTDOWN_PIN = 15
+WAITING_TIME_FOR_SHUTDOWN = 20
 
 BUTTONS = {
     14: {'name': 'leds', 'addr': 8, 'effect': EFFECT_1},
@@ -22,25 +25,52 @@ BUTTONS = {
 last_id = 0
 client = None
 operational_led = None
+timestamp_for_shutdown = None
+
+def log(message):
+    if(os.environ.get('DEBUG')):
+        print(message)
+    else:
+        syslog.syslog(message)
 
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code " + str(rc))
+    log("Connected with result code " + str(rc))
     client.subscribe("out-topic/#")
 
 def on_disconnect(client, userdata, rc):
-    print("Client disconnected")
+    log("Client disconnected")
 
 def on_message(client, userdata, msg):
-    print(msg.topic + " " + str(msg.payload))
+    log(msg.topic + " " + str(msg.payload))
     turn_led_off()
 
 def signal_handler(signal, frame):
-    print('You pressed Ctrl+C!')
+    log('You pressed Ctrl+C!')
     sys.exit(0)
 
 def button_pressed(channel):
-    if(GPIO.input(channel) == 0):
+    gpio_state = GPIO.input(channel)
+
+    if(gpio_state == 0):
         send_command(channel)
+
+    process_for_shutdown(channel, gpio_state)
+
+def process_for_shutdown(channel, gpio_state):
+    if(channel != SHUTDOWN_PIN):
+        return True
+
+    global timestamp_for_shutdown
+    if(gpio_state == 0):
+        timestamp_for_shutdown = time.time()
+    else:
+        if((time.time()-timestamp_for_shutdown) - WAITING_TIME_FOR_SHUTDOWN):
+            shutdown()
+
+def shutdown():
+    log("BYE BYE")
+    clean_up()
+    os.system('halt')
 
 def turn_led_off():
     GPIO.output(LED_PIN,GPIO.LOW)
@@ -49,7 +79,7 @@ def blink_led():
     GPIO.output(LED_PIN,GPIO.HIGH)
 
 def send_command(channel):
-    print("Button %i has been pressed" % channel)
+    log("Button %i has been pressed" % channel)
     blink_led()
     info = BUTTONS[channel]
     client.publish(topic_for_channel(info), payload_for_channel(info))
@@ -98,6 +128,13 @@ def setup_gpio():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
 
+def clean_up():
+    if client != None:
+        client.loop_stop()
+        client.disconnect()
+
+    GPIO.cleanup()
+
 try:
     setup_gpio()
     setup_gpio_inputs()
@@ -108,13 +145,10 @@ try:
     client.loop_start()
 
     signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
 
     print('Press Ctrl+C to end')
     signal.pause()
 
 finally:
-    if client != None:
-        client.loop_stop()
-        client.disconnect()
-
-    GPIO.cleanup()
+    clean_up()
