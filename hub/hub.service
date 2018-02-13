@@ -1,6 +1,6 @@
 [Unit]
 Description=Ticina Remote Control
-After=multi-user.target
+After=multi-user.targetc
 
 [Service]
 EnvironmentFile=/home/pi/.credentials
