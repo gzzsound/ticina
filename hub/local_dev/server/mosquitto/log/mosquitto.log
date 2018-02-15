@@ -1,0 +1,170 @@
+1518724427: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724427: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724427: Opening ipv4 listen socket on port 1883.
+1518724427: Opening ipv6 listen socket on port 1883.
+1518724445: New connection from 172.17.0.1 on port 1883.
+1518724445: New client connected from 172.17.0.1 as MQTT_FX_Client (c1, k60).
+1518724564: mosquitto version 1.4.12 terminating
+1518724834: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724834: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724834: Error: Unable to open pwfile "/mosquitto/conf/".
+1518724834: Error opening password file "/mosquitto/conf/".
+1518724839: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724839: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724839: Error: Unable to open pwfile "/mosquitto/conf/".
+1518724839: Error opening password file "/mosquitto/conf/".
+1518724858: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724858: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724858: Error: Unable to open pwfile "/mosquitto/conf/".
+1518724858: Error opening password file "/mosquitto/conf/".
+1518724883: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724883: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724883: Error: Unable to open pwfile "/mosquitto/conf/".
+1518724883: Error opening password file "/mosquitto/conf/".
+1518724888: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724888: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724888: Error: Unable to open pwfile "/mosquitto/conf/".
+1518724888: Error opening password file "/mosquitto/conf/".
+1518724916: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724916: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724916: Error: Unable to open pwfile "/mosquitto/conf/".
+1518724916: Error opening password file "/mosquitto/conf/".
+1518724978: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518724978: Config loaded from /mosquitto/config/mosquitto.conf.
+1518724978: Error: Unable to open pwfile "/mosquitto/conf/".
+1518724978: Error opening password file "/mosquitto/conf/".
+1518725039: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518725039: Config loaded from /mosquitto/config/mosquitto.conf.
+1518725039: Error: Unable to open pwfile "/mosquitto/conf/".
+1518725039: Error opening password file "/mosquitto/conf/".
+1518725493: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518725493: Config loaded from /mosquitto/config/mosquitto.conf.
+1518725493: Error: Unable to open pwfile "/mosquitto/conf/".
+1518725493: Error opening password file "/mosquitto/conf/".
+1518725511: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518725511: Config loaded from /mosquitto/config/mosquitto.conf.
+1518725511: Error: Unable to open pwfile "/mosquitto/conf/".
+1518725511: Error opening password file "/mosquitto/conf/".
+1518725563: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518725563: Config loaded from /mosquitto/config/mosquitto.conf.
+1518725563: Error: Unable to open pwfile "/mosquitto/conf/".
+1518725563: Error opening password file "/mosquitto/conf/".
+1518726314: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518726314: Config loaded from /mosquitto/config/mosquitto.conf.
+1518726314: Error: Unable to open pwfile "/mosquitto/conf/password".
+1518726314: Error opening password file "/mosquitto/conf/password".
+1518726338: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518726338: Config loaded from /mosquitto/config/mosquitto.conf.
+1518726338: Opening ipv4 listen socket on port 1883.
+1518726338: Opening ipv6 listen socket on port 1883.
+1518726344: New connection from 172.17.0.1 on port 1883.
+1518726344: Socket error on client <unknown>, disconnecting.
+1518726344: New connection from 172.17.0.1 on port 1883.
+1518726344: Socket error on client <unknown>, disconnecting.
+1518726365: mosquitto version 1.4.12 terminating
+1518726669: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518726669: Config loaded from /mosquitto/config/mosquitto.conf.
+1518726669: Opening ipv4 listen socket on port 1883.
+1518726669: Opening ipv6 listen socket on port 1883.
+1518726677: New connection from 172.17.0.1 on port 1883.
+1518726677: New client connected from 172.17.0.1 as MQTT_FX_Client (c1, k60, u'ticina').
+1518727569: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1518728470: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1518729371: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1518730272: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1518730633: mosquitto version 1.4.12 terminating
+1518730922: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518730922: Config loaded from /mosquitto/config/mosquitto.conf.
+1518730922: Opening ipv4 listen socket on port 1883.
+1518730922: Opening ipv6 listen socket on port 1883.
+1518730951: New connection from 172.17.0.1 on port 1883.
+1518730951: New client connected from 172.17.0.1 as MQTT_FX_Client (c1, k60, u'ticina').
+1518731121: mosquitto version 1.4.12 terminating
+1518731310: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518731310: Config loaded from /mosquitto/config/mosquitto.conf.
+1518731310: Opening ipv4 listen socket on port 1883.
+1518731310: Opening ipv6 listen socket on port 1883.
+1518731323: New connection from 172.17.0.1 on port 1883.
+1518731323: New client connected from 172.17.0.1 as MQTT_FX_Client (c1, k60, u'ticina').
+1518731338: New connection from 172.17.0.1 on port 1883.
+1518731338: New client connected from 172.17.0.1 as leds (c1, k60, u'ticina').
+1518731462: New connection from 172.17.0.1 on port 1883.
+1518731462: Client leds already connected, closing old connection.
+1518731462: Client leds disconnected.
+1518731462: New client connected from 172.17.0.1 as leds (c1, k60, u'ticina').
+1518731468: New connection from 172.17.0.1 on port 1883.
+1518731468: New client connected from 172.17.0.1 as clock (c1, k60, u'ticina').
+1518731632: Client leds has exceeded timeout, disconnecting.
+1518731632: Socket error on client leds, disconnecting.
+1518731644: mosquitto version 1.4.12 terminating
+1518732391: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518732391: Config loaded from /mosquitto/config/mosquitto.conf.
+1518732391: Opening ipv4 listen socket on port 1883.
+1518732391: Opening ipv6 listen socket on port 1883.
+1518732470: New connection from 172.17.0.1 on port 1883.
+1518732470: Socket error on client <unknown>, disconnecting.
+1518732470: New connection from 172.17.0.1 on port 1883.
+1518732470: Socket error on client <unknown>, disconnecting.
+1518732491: New connection from 172.17.0.1 on port 1883.
+1518732491: Socket error on client <unknown>, disconnecting.
+1518732491: New connection from 172.17.0.1 on port 1883.
+1518732491: Socket error on client <unknown>, disconnecting.
+1518732543: New connection from 172.17.0.1 on port 1883.
+1518732543: Socket error on client <unknown>, disconnecting.
+1518732543: New connection from 172.17.0.1 on port 1883.
+1518732543: Socket error on client <unknown>, disconnecting.
+1518732623: New connection from 172.17.0.1 on port 1883.
+1518732623: Socket error on client <unknown>, disconnecting.
+1518732623: New connection from 172.17.0.1 on port 1883.
+1518732623: Socket error on client <unknown>, disconnecting.
+1518732663: New connection from 172.17.0.1 on port 1883.
+1518732663: Socket error on client <unknown>, disconnecting.
+1518732663: New connection from 172.17.0.1 on port 1883.
+1518732663: Socket error on client <unknown>, disconnecting.
+1518733292: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1518733394: New connection from 172.17.0.1 on port 1883.
+1518733394: Socket error on client <unknown>, disconnecting.
+1518733405: New connection from 172.17.0.1 on port 1883.
+1518733405: Socket error on client <unknown>, disconnecting.
+1518733528: mosquitto version 1.4.12 terminating
+1518733548: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518733548: Config loaded from /mosquitto/config/mosquitto.conf.
+1518733548: Opening websockets listen socket on port 1883.
+1518733676: New client connected from 172.17.0.1 as clientId (c1, k60, u'ticina').
+1518733688: Socket error on client clientId, disconnecting.
+1518734448: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1518735349: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1518735880: mosquitto version 1.4.12 terminating
+1518735881: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518735881: Config loaded from /mosquitto/config/mosquitto.conf.
+1518735881: Opening ipv4 listen socket on port 1883.
+1518735881: Opening ipv6 listen socket on port 1883.
+1518735890: New connection from 172.17.0.1 on port 1883.
+1518735890: New client connected from 172.17.0.1 as 1115d9e6-95ad-461c-bef3-3abf7fdb8d5b (c1, k60, u'ticina').
+1518736004: Socket error on client 1115d9e6-95ad-461c-bef3-3abf7fdb8d5b, disconnecting.
+1518736016: New connection from 172.17.0.1 on port 1883.
+1518736016: New client connected from 172.17.0.1 as d70a9021-a038-4dea-b813-e2636367ecbc (c1, k60, u'ticina').
+1518736023: New connection from 172.17.0.1 on port 1883.
+1518736023: New client connected from 172.17.0.1 as MQTT_FX_Client (c1, k60, u'ticina').
+1518736057: Socket error on client MQTT_FX_Client, disconnecting.
+1518736059: Socket error on client d70a9021-a038-4dea-b813-e2636367ecbc, disconnecting.
+1518736060: New connection from 172.17.0.1 on port 1883.
+1518736060: New client connected from 172.17.0.1 as 53bf8131-5c52-4c7c-814c-d7d080ec61b4 (c1, k60, u'ticina').
+1518736073: New connection from 172.17.0.1 on port 1883.
+1518736073: New client connected from 172.17.0.1 as MQTT_FX_Client (c1, k60, u'ticina').
+1518736097: Socket error on client 53bf8131-5c52-4c7c-814c-d7d080ec61b4, disconnecting.
+1518736100: New connection from 172.17.0.1 on port 1883.
+1518736100: New client connected from 172.17.0.1 as 2046ffad-8772-4a3f-b502-697dc0605ce1 (c1, k60, u'ticina').
+1518736189: mosquitto version 1.4.12 terminating
+1518736250: mosquitto version 1.4.12 (build date 2017-06-01 13:03:46+0000) starting
+1518736250: Config loaded from /mosquitto/config/mosquitto.conf.
+1518736250: Opening ipv4 listen socket on port 1883.
+1518736250: Opening ipv6 listen socket on port 1883.
+1518736285: New connection from 172.17.0.1 on port 1883.
+1518736285: New client connected from 172.17.0.1 as clock (c1, k60, u'ticina').
+1518736290: New connection from 172.17.0.1 on port 1883.
+1518736290: New client connected from 172.17.0.1 as 22165444-c8ad-4905-80cc-0a9cce64a40f (c1, k60, u'ticina').
+1518736304: Socket error on client 22165444-c8ad-4905-80cc-0a9cce64a40f, disconnecting.
+1518736537: New connection from 172.17.0.1 on port 1883.
+1518736537: New client connected from 172.17.0.1 as 1dcefdbe-a5a7-4604-88b4-527ed3a2d74e (c1, k60, u'ticina').
+1518736544: Socket error on client 1dcefdbe-a5a7-4604-88b4-527ed3a2d74e, disconnecting.
