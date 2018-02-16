@@ -4,3 +4,5 @@ clock_mos.yml
 leds_mos.yml
 build/
 deps/
+*.log
+*.db
